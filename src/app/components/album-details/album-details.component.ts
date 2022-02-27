@@ -9,22 +9,22 @@ import { Subscription } from 'rxjs';
 })
 export class AlbumDetailsComponent implements OnInit {
   albumId:any;
+ 
   subscription: Subscription;
   allData:any;
   photoes:any;
   start:any=0;
-  end:any=9;
+  end:any=19;
   photoesArr:any=[];
+  perpage:any=20;
   constructor(
     private route: ActivatedRoute, 
     private router: Router,
     private _common: CommonService) {
-
       this.subscription = this._common.getobML().subscribe(lst => {
         if (lst) {
           this.allData=lst;
-
-          console.log( this.allData);
+          this.getPhotoes();
         } else {
           // clear list when empty list received
           this.allData = null;
@@ -34,15 +34,20 @@ export class AlbumDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.albumId = this.route.snapshot.paramMap.get('id');
-    console.log(this.albumId);
+    
+    if(this.allData!=null){ 
     this.getPhotoes();
+  }
+  
+    
+ 
 
   }
   @HostListener("window:scroll", [])
   onScroll(): void {
     if (this.bottomReached()) {
-      this.start=this.start+10;
-      this.end=this.end+10;
+      this.start=this.start+this.perpage;
+      this.end=this.end+this.perpage;
       this.loadPhotoes();
     }
   }
@@ -50,11 +55,13 @@ export class AlbumDetailsComponent implements OnInit {
     return (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
   }
   getPhotoes(){
+  if(this.allData!=null){
     this.photoes =  this.allData.filter((obj:any) => {
       return obj.id == this.albumId;
     }); 
+  
       console.log(this.photoes);
-      this.loadPhotoes();
+      this.loadPhotoes();}
      } 
      
      

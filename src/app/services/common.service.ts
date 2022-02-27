@@ -21,11 +21,7 @@ export class CommonService {
   public currentMargedSubject = new BehaviorSubject(null);
   public currentMarged: Observable<any> = this.currentMargedSubject.asObservable();
 
-
-
   constructor(private http: HttpClient) { }
-
-
 
   public publicHeader() {
     let httpOptionsSecure = {
@@ -39,23 +35,39 @@ export class CommonService {
   //************** Get All Albums ************/ 
   getobAl(): Observable<any> {
     return this.currentAlbum;
-    }
-    getobPh(): Observable<any> {
-      return this.currentPhoto;
-      }
+  }
+  getobPh(): Observable<any> {
+    return this.currentPhoto;
+  }
 
-      getobML(): Observable<any> {
-        return this.currentMarged;
-        }
+  getobML(): Observable<any> {
+    return this.currentMarged;
+  }
+
+  getAllAlbums() {
+    this.onGettingAllAlbums().subscribe(res => {
+      this.currentAlbumSubject.next(res);
+      this.getAllPhotos(res);
+
+    });
+  }
+
+  getAllPhotos(albdata:any) {
+    this.onGettingAllPhotos().subscribe(res => {
+      this.currentPhotoSubject.next(res);
+      this.mergedata(albdata,res);
+    });
+  }
+
   onGettingAllAlbums() {
     return this.http.get<any>(this.baseUrl + 'albums', this.publicHeader())
       .pipe(map((d) => {
-        //You can perform some transformation here
         return d;
       }), catchError((err) => {
         return throwError(() => err);
       }))
   }
+
   onGettingAllPhotos() {
     return this.http.get<any>(this.baseUrl + 'photos', this.publicHeader())
       .pipe(map((d) => {
@@ -66,25 +78,20 @@ export class CommonService {
       }))
   }
 
-  mergedata(allist:any,phlist:any) {
-    if(allist.length>0)
-    {
-      if(phlist.length>0)
-    {
-      allist.forEach(function (item:any) {
-        item.listofphotos =  phlist.filter(function(obj:any) {
-          return obj.albumId == item.id;
-        });         
-      }); 
-      console.log(allist);
-      this.currentMargedSubject.next(allist);    
-    }
+  mergedata(allist: any, phlist: any) {
+    if (allist.length > 0) {
+      if (phlist.length > 0) {
+        allist.forEach(function (item: any) {
+          item.listofphotos = phlist.filter(function (obj: any) {
+            return obj.albumId == item.id;
+          });
+        });
+        console.log(allist);
+        this.currentMargedSubject.next(allist);
+      }
 
     }
-    
-  }
 
-
-  
+  }  
 
 }
