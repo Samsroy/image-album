@@ -59,7 +59,7 @@ export class CommonService {
     });
   }
 
-  onGettingAllAlbums() {
+  public onGettingAllAlbums() {
     return this.http.get<any>(this.baseUrl + 'albums', this.publicHeader())
       .pipe(map((d) => {
         return d;
@@ -68,7 +68,7 @@ export class CommonService {
       }))
   }
 
-  onGettingAllPhotos() {
+  public onGettingAllPhotos() {
     return this.http.get<any>(this.baseUrl + 'photos', this.publicHeader())
       .pipe(map((d) => {
         //You can perform some transformation here
@@ -78,7 +78,7 @@ export class CommonService {
       }))
   }
 
-  mergedata(allist: any, phlist: any) {
+  public mergedata(allist: any, phlist: any) {
     if (allist.length > 0) {
       if (phlist.length > 0) {
         allist.forEach(function (item: any) {

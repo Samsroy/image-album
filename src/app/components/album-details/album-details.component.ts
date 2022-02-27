@@ -62,7 +62,7 @@ export class AlbumDetailsComponent implements OnInit {
   
       console.log(this.photoes);
       this.loadPhotoes();}
-     } 
+  } 
      
      
   loadPhotoes(){
