@@ -25,5 +25,11 @@ typescript                      4.5.5
 
 
 
+Steps to run the project:
 
+1. Clone project from git
+2. Dive into the project folder
+3. Run "npm install"
+4. Run "ng serve"
+5. open "http://localhost:4200/" in your browser
 
