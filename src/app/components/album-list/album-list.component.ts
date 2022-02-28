@@ -9,9 +9,9 @@ import { Subscription } from 'rxjs';
 })
 export class AlbumListComponent implements OnInit {
   alblst: any;
-  phlst: any;
+  
   subscriptional: Subscription;
-  subscriptionph: Subscription;
+ 
   constructor(private _common: CommonService) 
     {
 
@@ -22,14 +22,7 @@ export class AlbumListComponent implements OnInit {
           this.alblst = null;
         }
       });
-      this.subscriptionph = this._common.getobPh().subscribe(lst2 => {
-        if (lst2) {
-          this.phlst=lst2;
-          this._common.mergedata(this.alblst,this.phlst)          
-        } else {
-          this.phlst = null;
-        }
-      });
+      
 
     }
 
