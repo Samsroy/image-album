@@ -2,7 +2,7 @@
     <div class="col-12">
 <div class="d-grid gap-3" *ngIf="alblst!=null">
     <div *ngFor="let album of alblst" class="p-2 bg-light border" >
-       <a style="cursor:pointer" [routerLink]="['/album',album.id]" class="text-decoration-none"> {{album.title}} ({{album.listofphotos.length}})</a>
+       <a style="cursor:pointer" [routerLink]="['/album',album.id]" class="text-decoration-none"> {{album.title}} ({{album.listofphotos?.length}})</a>
        
     </div>
     

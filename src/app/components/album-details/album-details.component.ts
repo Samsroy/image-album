@@ -66,10 +66,14 @@ export class AlbumDetailsComponent implements OnInit {
      
      
   loadPhotoes(){
-    let parr=this.photoes[0].listofphotos.slice( this.start, this.end)
-    for (var i = 0, len = parr.length; i < len; ++i) {
-      this.photoesArr.push(parr[i]);
-     }
+    if(this.photoes.length>0){
+      let parr=this.photoes[0].listofphotos.slice( this.start, this.end)
+      console.log(parr);
+      for (var i = 0, len = parr.length; i < len; ++i) {
+        this.photoesArr.push(parr[i]);
+       }
+    }
+    
   }
   
   

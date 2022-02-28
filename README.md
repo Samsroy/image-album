@@ -33,3 +33,7 @@ Steps to run the project:
 4. Run "ng serve"
 5. open "http://localhost:4200/" in your browser
 
+
+Build Project: 
+
+1. To build the project run "ng build --aot" 
