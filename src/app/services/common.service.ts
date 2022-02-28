@@ -87,6 +87,8 @@ export class CommonService {
           });
         });
         console.log(allist);
+        
+        localStorage.setItem('mergedData',JSON.stringify(allist));        
         this.currentMargedSubject.next(allist);
       }
 
