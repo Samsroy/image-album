@@ -8,8 +8,15 @@ import { CommonService } from './services/common.service';
 })
 export class AppComponent {
   title = 'image-album';
+  alllist:any;
   constructor(private _common: CommonService ) { }
-  ngOnInit(): void {  
-    this._common.getAllAlbums();  
+  ngOnInit(): void { 
+    if(localStorage.getItem('mergedData')){
+      this.alllist=localStorage.getItem('mergedData');
+      this._common.currentMargedSubject.next(JSON.parse(this.alllist));
+    } else {
+      this._common.getAllAlbums();
+    }
+      
   }  
 }

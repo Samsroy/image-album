@@ -15,7 +15,7 @@ export class AlbumListComponent implements OnInit {
   constructor(private _common: CommonService) 
     {
 
-      this.subscriptional = this._common.getobAl().subscribe(lst => {
+      this.subscriptional = this._common.getobML().subscribe(lst => {
         if (lst) {
           this.alblst=lst;
         } else {
