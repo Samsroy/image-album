@@ -1,0 +1,20 @@
+::ng-deep.mat-dialog-container{
+    padding: 0!important;
+    .mat-dialog-title{
+        background: #5a80bd;
+        button{
+            background: transparent;
+            box-shadow: none;
+            border: none;
+            color: #fff;
+        }
+        h2{
+            font-size: 14px!important;
+        }
+    } 
+    .btn-primary {
+        color: #fff;
+        background-color: #5a80bd!important;
+        border-color: #5a80bd!important;
+    }
+}

@@ -80,10 +80,10 @@ export class AlbumDetailsComponent implements OnInit {
     
   }
 
-  openDialog(): void {
+  openDialog(title:any): void {
     const dialogRef = this.dialog.open(ReactiveFormComponent, {
-      width: '250px',
-      data: {name: "", animal: ""},
+      width: '300px',
+      data: {name: title},
     });
 
     dialogRef.afterClosed().subscribe(result => {
