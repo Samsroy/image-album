@@ -1,0 +1,17 @@
+.imageContainer{
+    .imageSec{
+        margin-bottom: 2px;;
+        img{
+            border:1px  solid rgb(49, 48, 48);
+        }
+    }
+}
+
+
+
+@media (max-width: 567px){
+    .col-sm-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}

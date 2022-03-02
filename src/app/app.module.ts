@@ -7,18 +7,28 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { HomeComponent } from './components/home/home.component';
 import { AlbumListComponent } from './components/album-list/album-list.component';
 import { AlbumDetailsComponent } from './components/album-details/album-details.component';
+import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AlbumListComponent,
-    AlbumDetailsComponent
+    AlbumDetailsComponent,
+    ReactiveFormComponent
   ],
   imports: [
     InfiniteScrollModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

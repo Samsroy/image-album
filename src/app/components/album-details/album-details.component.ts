@@ -2,6 +2,9 @@ import { Component, OnInit,HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import { Subscription } from 'rxjs';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ReactiveFormComponent } from '../reactive-form/reactive-form.component';
+
 @Component({
   selector: 'app-album-details',
   templateUrl: './album-details.component.html',
@@ -20,6 +23,7 @@ export class AlbumDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private router: Router,
+    public dialog: MatDialog,
     private _common: CommonService) {
       this.subscription = this._common.getobML().subscribe(lst => {
         if (lst) {
@@ -75,6 +79,19 @@ export class AlbumDetailsComponent implements OnInit {
     }
     
   }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ReactiveFormComponent, {
+      width: '250px',
+      data: {name: "", animal: ""},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      
+    });
+  }
+
   
   
 }
